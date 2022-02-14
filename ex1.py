@@ -1,5 +1,6 @@
 #数据类型转换
 a,b,c=1,2.7,"jinwu"
+d={}
 print(type(a))
 print(type(b))
 print(type(c))
