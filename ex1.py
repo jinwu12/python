@@ -6,6 +6,7 @@ print(type(c))
 a=float(a)
 b=int(b)
 c1=tuple(c)
+d={}
 print(type(a),'\n',type(b),'\n',type(c1))
 #推导式3
 #计算20以内的奇数
