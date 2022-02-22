@@ -24,13 +24,14 @@ c7=(a!=b)
 c8=(a<b)
 print(c6,c7,c8)
 #位运算 
-#0,23 23
 c9=a&b
 c10=a|b
 c11=a^b
+#输出 0,23 23
 print(c9,c10,c11)
-#逻辑 20,3,F
+#逻辑
 c12=a and b
 c13=a or b
 c14=not b
+# 输出20,3,F
 print(c12,c13,c14)
