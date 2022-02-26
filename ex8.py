@@ -1,0 +1,14 @@
+a=set("beijin")
+b={'s','h','a','n','g','h','a','i'}
+#输出集合a，b：{b,e,i,j,n}{s,h,a,n,g,i}
+print(a,b)
+#a,b的交集：{i，n}
+print(a&b)
+#a有但b没有的元素：{b,e,j}
+print(a-b)
+#a增加一个元素x:{b,e,i,j,n,x}
+a.add('x')
+print(a)
+#a删除一个元素b:{e,i,j,n,x}
+a.remove('b')
+print(a)
