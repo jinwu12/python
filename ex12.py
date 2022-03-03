@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# Filename: ex12.py
+
 #定义一个求最大公约数的函数
 def gys(a,b):
     g=min(a, b)
