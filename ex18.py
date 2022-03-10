@@ -1,8 +1,17 @@
-d=[5,'a',0]
+#定义一个错误类
+class MYError(Exception):
+    pass
+d=[5,'a',0,16]
 #10分别除以d的各元素
 for i in d:
     try:
+        #如果i大于10或者小于0，抛出自定义错误类
+        if i>10 or i<0:
+            raise MYError
         a=10/i
+    #自定义错误
+    except MYError:
+        print('数值超出范围')
 #除数类型错误
     except TypeError:
         print("{}不是数字".format(i))
@@ -16,4 +25,4 @@ for i in d:
     finally:
         print('完成一次计算')
 #循环结束
-    print('全部完成')
+print('全部完成')
