@@ -25,11 +25,25 @@ class tz2(timezone):
         print('UTC0时间戳：{},UTC：{}'.format(time.mktime(time.gmtime(self.t)),0))
 t=time.time()
 #调用父类
+'''
+原始时间：Thu Mar 24 14:52:31 2022,原始时区：-8
+目标时间：Thu Mar 24 11:52:31 2022,目标时区：-5
+'''
 change=timezone(t, -5)
 change.cgtz()
 #调用子类1
+'''
+原始时间：Thu Mar 24 14:52:31 2022,原始时区：-8
+目标时间：Thu Mar 24 04:52:31 2022,目标时区：2
+原始时间戳：1648104751.5234015,目标时间戳：1648068751.5234015
+'''
 change1=tz1(t,2)
 change1.cgtz()
 #调用子类2
+'''
+原始时间：Thu Mar 24 14:52:31 2022,原始时区：-8
+目标时间：Thu Mar 24 06:52:31 2022,目标时区：0
+UTC0时间戳：1648075951.0,UTC：0
+'''
 change3=tz2(t, 0)
 change3.cgtz()
