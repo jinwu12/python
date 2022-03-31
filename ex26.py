@@ -96,25 +96,26 @@ data = {'Combination_name': 'test',
         'Combination_3price': 67,
         'comments': 'TextField()',
         'Baseprice': 7.23}
-#Combination.add(data)
-#Combination.read('test')
+# Combination.add(data)
+# Combination.read('test')
+
 
 class Baseprice(Model):
     id = AutoField(primary_key=True)
     symbol = CharField(max_length=256)
-    interval=CharField(max_length=4)
-    ts=BigIntegerField()
-    price_open=DoubleField()
-    price_low=DoubleField()
-    price_high=DoubleField()
-    price_close=DoubleField()
+    interval = CharField(max_length=4)
+    ts = BigIntegerField()
+    price_open = DoubleField()
+    price_low = DoubleField()
+    price_high = DoubleField()
+    price_close = DoubleField()
     comments = TextField()
 
     class Meta:
         database = mydb
-        indexes =((('symbol','interval','ts'),True),)
+        indexes = ((('symbol', 'interval', 'ts'), True),)
         table_name = "Baseprice"
-    
+
     def add(data):
         if not Baseprice.table_exists():
             Baseprice.create_table()
@@ -122,27 +123,25 @@ class Baseprice(Model):
 
     # 读取表中id为“id”的数据
     def read(id):
-        bp = Baseprice.get(Baseprice.id== id)
+        bp = Baseprice.get(Baseprice.id == id)
         # 将cb转换成一个字典
         i = model_to_dict(bp)
         print(i)
 
+
 '''
 测试案例及结果
-{'id': 1, 'symbol': 'cccccc', 'interval': 'Char', 'ts': 23242566, 
-'price_open': 4.2, 'price_low': 3.9, 'price_high': 5.0, 
+{'id': 1, 'symbol': 'cccccc', 'interval': 'Char', 'ts': 23242566,
+'price_open': 4.2, 'price_low': 3.9, 'price_high': 5.0,
 'price_close': 4.4, 'comments': ''}
 '''
-data2={
+data2 = {
     'symbol': 'cccccc',
-    'interval':'Char',
-    'ts':23242566,
-    'price_open':4.2,
-    'price_low':3.9,
-    'price_high':5.0,
-    'price_close':4.4}
+    'interval': 'Char',
+    'ts': 23242566,
+    'price_open': 4.2,
+    'price_low': 3.9,
+    'price_high': 5.0,
+    'price_close': 4.4}
 Baseprice.add(data2)
 Baseprice.read(1)
-
-
-
