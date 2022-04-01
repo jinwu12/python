@@ -118,15 +118,27 @@ class Baseprice(Model):
 
     def add(data):
         if not Baseprice.table_exists():
+            print('aasad')
             Baseprice.create_table()
         Baseprice.insert(data).execute()
 
-    # 读取表中id为“id”的数据
-    def read(id):
-        bp = Baseprice.get(Baseprice.id == id)
-        # 将cb转换成一个字典
-        i = model_to_dict(bp)
-        print(i)
+    # 读取表中的数据
+    def read(*id):
+        try:
+            # 如果没有参数则查询所有数据
+            if len(id) == 0:
+                bps = Baseprice.select()
+        # 如果有1个参数，查询id或者symbol值为参数的数据,没有匹配数据返回空值
+            if len(id) == 1:
+                bps = Baseprice.select().where((Baseprice.id == id) | (Baseprice.symbol == id))
+            # 参数大于1个或没有查询结果抛出异常
+            if len(id) > 1 or bps == '':
+                raise Exception('参数错误')
+            return bps
+
+        except:
+            print('错误')
+            return ()
 
 
 '''
@@ -136,12 +148,16 @@ class Baseprice(Model):
 'price_close': 4.4, 'comments': ''}
 '''
 data2 = {
-    'symbol': 'cccccc',
-    'interval': 'Char',
-    'ts': 23242566,
-    'price_open': 4.2,
-    'price_low': 3.9,
-    'price_high': 5.0,
-    'price_close': 4.4}
-Baseprice.add(data2)
-Baseprice.read(1)
+    'symbol': 'ddd3as',
+    'interval': 'Ch5',
+    'ts': 2324289,
+    'price_open': 4.6,
+    'price_low': 3.4,
+    'price_high': 5.3,
+    'price_close': 4.1}
+
+# Baseprice.add(data2)
+bps = Baseprice.read('ssf')
+for bp in bps:
+    i = model_to_dict(bp)
+    print(i)
