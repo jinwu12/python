@@ -10,3 +10,6 @@ e1=abs(b)
 e2=math.floor(b)
 e3=math.log(c,a)
 print(e1,e2,e3)
+import os
+#os.makedirs('assist/set')
+os.path.exists('assist')
