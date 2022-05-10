@@ -2,7 +2,7 @@ import time
 import datetime
 import pytz
 # 获取当前时间戳
-t = 1580616000
+t = 1581480001
 #时间戳格式化输出
 print(time.strftime("%Y-%m-%d",time.localtime(t)))
 # 将时间戳转换成格式化时间
@@ -14,10 +14,10 @@ print(T.timestamp())
 #时区转换或datetime.datetime.fromtimestamp(time, tz)
 tz=pytz.timezone('Etc/GMT+5')
 T=T.replace().astimezone(tz)
-print(T.strftime("%Y-%m-%d"))
-#datetime分拆及合成
-T=datetime.datetime.combine(T.date(), datetime.time(22,0,0,0))
 print(T)
+#datetime分拆及合成带时区信息
+T=datetime.datetime.combine(T.date(), datetime.time(23,0,0,0),tz)
+print(T.timestamp())
 #datetime对象转换时间元组
 print(T.timetuple())
 
